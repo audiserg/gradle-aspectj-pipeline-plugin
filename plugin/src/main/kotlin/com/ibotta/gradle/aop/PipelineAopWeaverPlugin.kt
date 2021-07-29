@@ -53,12 +53,11 @@ class PipelineAopWeaverPlugin : Plugin<Project> {
 
         val extension = project.extensions.create(AopWeaveExtension.AOP_WEAVE_EXTENSION, AopWeaveExtension::class.java)
         val android = project.extensions.findByName(ANDROID_EXTENSION_NAME) as BaseExtension
-
         project.afterEvaluate {
-            val variants = when (setOf(isAndroid, isLibrary)) {
-                setOf(false, true) ->
-                    (android as LibraryExtension).libraryVariants
-                else -> (android as AppExtension).applicationVariants
+            val variants = if (isAndroid or isDynamicLibrary) {
+                (android as AppExtension).applicationVariants
+            } else {
+                (android as LibraryExtension).libraryVariants
             }
 
             variants.forEach { variant ->
