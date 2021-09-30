@@ -50,7 +50,7 @@ buildscript {
 
 	dependencies {
 		...
-		classpath "com.ibotta:plugin:1.1.0"
+		classpath "com.ibotta:plugin:1.2.0"
 		...
 	}
 }
@@ -70,7 +70,7 @@ buildscript {
 
 	dependencies {
 		...
-		classpath("com.ibotta:plugin:1.1.0")
+		classpath("com.ibotta:plugin:1.2.0")
 		...
 	}
 }
